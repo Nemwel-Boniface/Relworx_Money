@@ -159,3 +159,59 @@ ul li button i {
   margin-left: 5px;
   font-size: 23px;
 }
+
+
+/* Sign up section */
+
+.signup h2 {
+  text-align: center;
+  font-size: 35px; 
+}
+
+.signup .accountSignup {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.signup .accountSignup img {
+  width: 100%;
+}
+
+.signup .accountSignup .form {
+  margin: 3rem 0;
+}
+
+.signup .accountSignup .form h3 {
+  margin: 0.4rem 0;
+}
+
+.signup .accountSignup .form .inputnameGroup {
+  display: flex;
+  gap: 10px;
+}
+
+.signup .accountSignup .form input {
+  margin: 0.4rem 0;
+  padding: 10px;
+}
+
+.signup .accountSignup .form button {
+  width: 140px;
+  background-color: var(--blue);
+  color: #fff;
+  transition: 0.5s;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.signup .accountSignup .form button:hover {
+  border: 1px solid var(--blue);
+  background-color: #fff;
+  color: var(--blue);
+}
+
+.signup .accountSignup .form button i {
+  margin-left: 5px;
+  font-size: 23px;
+}
