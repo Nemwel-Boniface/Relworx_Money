@@ -215,3 +215,13 @@ ul li button i {
   margin-left: 5px;
   font-size: 23px;
 }
+
+/* Footer section now */
+
+.footer {
+  text-align: center;
+  width: 100%;
+  padding: 20px 5%;
+  background-color: var(--blue);
+  color: #fff;
+}
