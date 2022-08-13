@@ -1,0 +1,72 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+:root {
+  --blue: rgba(88, 43, 232, 1);
+  --pink: rgba(255, 20, 147, 1);
+}
+
+body {
+  position: relative;
+}
+
+h2 {
+  font-size: 25px;
+}
+
+h4 {
+  font-size: 22px;
+}
+
+p {
+  font-size: 17px;
+}
+
+a {
+  font-size: 17px;
+}
+
+/* The accounts section now */
+
+.navbar ul li button a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.account {
+  width: 100%;
+  padding: 5%;
+}
+
+.account .profileHeader {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin: 2rem 9;
+}
+
+.account .profileHeader img {
+  width: 100%;
+  max-width: 200px;
+}
+
+.account .profileHeader .headerDetails {
+  margin: 2rem 0;
+}
+
+.account ul {
+  margin: 2rem 0;
+}
+
+.account ul li button {
+  width: 220px;
+}

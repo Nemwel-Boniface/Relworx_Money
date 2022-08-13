@@ -221,7 +221,7 @@ ul li button i {
 .footer {
   text-align: center;
   width: 100%;
-  padding: 20px 5%;
+  padding: 20px 5% 0 5%;
   background-color: var(--blue);
   color: #fff;
 }
