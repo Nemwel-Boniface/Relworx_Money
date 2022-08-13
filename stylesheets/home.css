@@ -1,0 +1,227 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+:root {
+  --blue: rgba(88, 43, 232, 1);
+  --pink: rgba(255, 20, 147, 1);
+}
+
+body {
+  position: relative;
+}
+
+h2 {
+  font-size: 25px;
+}
+
+h4 {
+  font-size: 22px;
+}
+
+p {
+  font-size: 17px;
+}
+
+a {
+  font-size: 17px;
+}
+
+/* Header section and navbar */
+
+.header {
+  width: 100%;
+  color: #fff;
+}
+
+.header .navbar {
+  background-color: var(--blue);
+  padding: 15px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ul {
+  display: flex;
+}
+
+ul li {
+  list-style-type: none;
+  margin-right: 20px;
+}
+
+ul li button {
+  width: 140px;
+  cursor: pointer;
+  color: #fff;
+  padding: 8px;
+  border: none;
+  outline: none;
+  transition: 0.5s;
+  background-color: var(--blue);
+  font-size: 20px;
+}
+
+ul li button:hover {
+  border: 1px solid var(--blue);
+  background-color: #fff;
+  color: var(--blue);
+}
+
+ul li button i {
+  margin-left: 5px;
+  font-size: 23px;
+}
+
+
+/* main section. Will house the home, signin and sign up */
+
+.hidden {
+  display: none;
+}
+
+.main {
+  width: 100%;
+  padding: 5%;
+}
+
+.main .homePage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.main .homePage .homeLeft h1 {
+  font-size: 40px;
+  margin: 40px 0;
+}
+
+.main .homePage .homeLeft p {
+  margin: 25px 0;
+  font-size: 19px;
+}
+
+.main .homePage .homeRight img {
+  width: 100%;
+}
+
+/* Sign in section now */
+
+.signin h2 {
+  text-align: center;
+  font-size: 35px;
+}
+
+.signin .accountSignin {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.signin .accountSignin img {
+  width: 100%;
+}
+
+.signin .accountSignin .form {
+  margin: 3rem 0;
+}
+
+.signin .accountSignin .form input {
+  margin: 1rem 0;
+  padding: 10px;
+}
+
+.signin .accountSignin .form button {
+  width: 100px;
+  background-color: var(--blue);
+  color: #fff;
+  transition: 0.5s;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.signin .accountSignin .form button:hover {
+  border: 1px solid var(--blue);
+  background-color: #fff;
+  color: var(--blue);
+}
+
+.signin .accountSignin .form button i {
+  margin-left: 5px;
+  font-size: 23px;
+}
+
+
+/* Sign up section */
+
+.signup h2 {
+  text-align: center;
+  font-size: 35px; 
+}
+
+.signup .accountSignup {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.signup .accountSignup img {
+  width: 100%;
+}
+
+.signup .accountSignup .form {
+  margin: 3rem 0;
+}
+
+.signup .accountSignup .form h3 {
+  margin: 0.4rem 0;
+}
+
+.signup .accountSignup .form .inputnameGroup {
+  display: flex;
+  gap: 10px;
+}
+
+.signup .accountSignup .form input {
+  margin: 0.4rem 0;
+  padding: 10px;
+}
+
+.signup .accountSignup .form button {
+  width: 140px;
+  background-color: var(--blue);
+  color: #fff;
+  transition: 0.5s;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.signup .accountSignup .form button:hover {
+  border: 1px solid var(--blue);
+  background-color: #fff;
+  color: var(--blue);
+}
+
+.signup .accountSignup .form button i {
+  margin-left: 5px;
+  font-size: 23px;
+}
+
+/* Footer section now */
+
+.footer {
+  text-align: center;
+  width: 100%;
+  padding: 20px 5% 0 5%;
+  background-color: var(--blue);
+  color: #fff;
+}
