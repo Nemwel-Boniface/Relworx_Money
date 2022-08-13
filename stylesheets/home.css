@@ -45,22 +45,21 @@ a {
 .header .navbar {
   background-color: var(--blue);
   padding: 15px 5%;
-  margin-bottom: 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.header .navbar ul {
+ul {
   display: flex;
 }
 
-.header .navbar ul li {
+ul li {
   list-style-type: none;
   margin-right: 20px;
 }
 
-.header .navbar ul li button {
+ul li button {
   width: 140px;
   cursor: pointer;
   color: #fff;
@@ -72,28 +71,45 @@ a {
   font-size: 20px;
 }
 
-.header .navbar ul li button:hover {
+ul li button:hover {
   border: 1px solid var(--blue);
   background-color: #fff;
   color: var(--blue);
 }
 
-.header .navbar ul li button i {
+ul li button i {
   margin-left: 5px;
   font-size: 23px;
 }
 
 
-/* Responsive design now */
+/* main section. Will house the home, signin and sign up */
 
-/* Tablet version */
-
-@media screen and (min-width: 748px) {
- 
+.hidden {
+  display: none;
 }
 
-/* Desktop versions now */
+.main {
+  width: 100%;
+  padding: 5%;
+}
 
-@media screen and (min-width: 1080px) {
-  
+.main .homePage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.main .homePage .homeLeft h1 {
+  font-size: 40px;
+  margin: 40px 0;
+}
+
+.main .homePage .homeLeft p {
+  margin: 25px 0;
+  font-size: 19px;
+}
+
+.main .homePage .homeRight img {
+  width: 100%;
 }
