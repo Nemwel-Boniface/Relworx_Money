@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+:root {
+  --blue: rgba(88, 43, 232, 1)
+  --pink: rgba(255, 20, 147, 1);
+}
+
+body {
+  position: relative;
+}
+
+h2 {
+  font-size: 25px;
+}
+
+h4 {
+  font-size: 22px;
+}
+
+p {
+  font-size: 17px;
+}
+
+a {
+  font-size: 17px;
+}
+
+
+/* Responsive design now */
+
+/* Tablet version */
+
+@media screen and (min-width: 748px) {
+ 
+}
+
+/* Desktop versions now */
+
+@media screen and (min-width: 1080px) {
+  
+}
