@@ -11,7 +11,7 @@ body {
 }
 
 :root {
-  --blue: rgba(88, 43, 232, 1)
+  --blue: rgba(88, 43, 232, 1);
   --pink: rgba(255, 20, 147, 1);
 }
 
@@ -33,6 +33,54 @@ p {
 
 a {
   font-size: 17px;
+}
+
+/* Header section and navbar */
+
+.header {
+  width: 100%;
+  color: #fff;
+}
+
+.header .navbar {
+  background-color: var(--blue);
+  padding: 15px 5%;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header .navbar ul {
+  display: flex;
+}
+
+.header .navbar ul li {
+  list-style-type: none;
+  margin-right: 20px;
+}
+
+.header .navbar ul li button {
+  width: 140px;
+  cursor: pointer;
+  color: #fff;
+  padding: 8px;
+  border: none;
+  outline: none;
+  transition: 0.5s;
+  background-color: var(--blue);
+  font-size: 20px;
+}
+
+.header .navbar ul li button:hover {
+  border: 1px solid var(--blue);
+  background-color: #fff;
+  color: var(--blue);
+}
+
+.header .navbar ul li button i {
+  margin-left: 5px;
+  font-size: 23px;
 }
 
 
