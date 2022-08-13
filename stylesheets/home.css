@@ -113,3 +113,49 @@ ul li button i {
 .main .homePage .homeRight img {
   width: 100%;
 }
+
+/* Sign in section now */
+
+.signin h2 {
+  text-align: center;
+  font-size: 35px;
+}
+
+.signin .accountSignin {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.signin .accountSignin img {
+  width: 100%;
+}
+
+.signin .accountSignin .form {
+  margin: 3rem 0;
+}
+
+.signin .accountSignin .form input {
+  margin: 1rem 0;
+  padding: 10px;
+}
+
+.signin .accountSignin .form button {
+  width: 100px;
+  background-color: var(--blue);
+  color: #fff;
+  transition: 0.5s;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.signin .accountSignin .form button:hover {
+  border: 1px solid var(--blue);
+  background-color: #fff;
+  color: var(--blue);
+}
+
+.signin .accountSignin .form button i {
+  margin-left: 5px;
+  font-size: 23px;
+}
