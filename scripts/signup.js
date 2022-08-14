@@ -48,6 +48,7 @@ const addANewUser = () => {
     password: userpassword.value
   })
   AddToLocalStorage(users);
+  getFromLocalStorage()
   signUpform.reset();
 }
 
@@ -55,8 +56,23 @@ newUser.addEventListener('click', () => {
   addANewUser();
 })
 
+const getFromLocalStorage = () => {
+  if(localStorage.getItem('RelworxUser')) {
+    relworksusers = JSON.parse(localStorage.getItem('RelworxUser'));
+  }
+
+  relworksusers.forEach((user) => {
+    users.push(user);
+  })
+  
+  return users;
+}
+// getFromLocalStorage();
+
 window.addEventListener('DOMContentLoaded', () => {
   if (!localStorage.getItem('RelworxUser')) {
     addAdminToLocalStorage()
   }
+
+  getFromLocalStorage();
 })
