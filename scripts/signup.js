@@ -1,0 +1,36 @@
+const userFirstName = document.querySelector('.firstName');
+const userlastName = document.querySelector('.lastName');
+const mobileNo = document.querySelector('.mobileNo');
+const useremail = document.querySelector('.email');
+const usergender = document.querySelector('.gender');
+const userpassword = document.querySelector('.password');
+const newUser = document.querySelector('.newUser');
+const signUpform = document.querySelector('.signUpform');
+
+let users = [];
+
+console.log(users)
+
+const admin = [
+  {
+    id: 1,
+    firstName: "Nemwel",
+    secondName: "Boniface",
+    role: "admin",
+    mobileNumber: 727475518,
+    gender: "male",
+    loggedIn: false,
+    email: "nemwelboniface@outlook.com",
+    password: "nemwel123"
+  }
+]
+
+const addAdminToLocalStorage = () => {
+  localStorage.setItem('RelworxUser', JSON.stringify(admin));
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  if (!localStorage.getItem('RelworxUser')) {
+    addAdminToLocalStorage()
+  }
+})
