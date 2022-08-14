@@ -68,18 +68,18 @@
         <form class="form" id="form">
           <h3>Create an account by filling all of the fields</h3>
           <div class="inputnameGroup">
-            <input type="text" placeholder="Your first name" required>
-            <input type="text" placeholder="Your second name" required>
+            <input class="firstName" type="text" placeholder="Your first name" required>
+            <input class="lastName" type="text" placeholder="Your second name" required>
           </div>
-          <input type="tel" placeholder="your Mobile phone" required><br>
-          <input type="email" placeholder="example@gmail.com" required><br>
+          <input class="mobileNo" type="tel" placeholder="your Mobile phone" required><br>
+          <input class="email" type="email" placeholder="example@gmail.com" required><br>
           <label for="gender">Select your gender:</label>
-          <select name="gender" id="gender">
+          <select class="gender" name="gender" id="gender">
             <option value="male">Male</option>
             <option value="female">Female</option>
           </select><br>
-          <input type="password" placeholder="Enter your password" required><br>
-          <button type="submit">Sign Up<i class="fa fa-user-plus" aria-hidden="true"></i></button>
+          <input class="password" type="password" placeholder="Enter your password" required><br>
+          <button class="newUser" type="submit">Sign Up<i class="fa fa-user-plus" aria-hidden="true"></i></button>
         </form>
       </div>
     </section>
@@ -90,5 +90,6 @@
   </footer>
   
   <script src="./scripts/spa.js"></script>
+  <script src="./scripts/index.js"></script>
 </body>
 </html>
