@@ -23,26 +23,28 @@
 
   <header class="header">
     <nav class="navbar">
-      <h2>Relworx Money</h2>
+      <h2 class="home">Relworx Money</h2>
       <ul>
-        <li><button type="button">Sign In<i class="fa fa-sign-in" aria-hidden="true"></i></button></li>
-        <li><button type="button">Sign Up<i class="fa fa-user-plus" aria-hidden="true"></i></button></li>
+        <li><button class="signInBtn" type="button">Sign In<i class="fa fa-sign-in" aria-hidden="true"></i></button></li>
+        <li><button class="signUpBtn" type="button">Sign Up<i class="fa fa-user-plus" aria-hidden="true"></i></button></li>
       </ul>
     </nav>
   </header>
 
   <main class="main">
-    <section class="homePage active">
-      <div class="homeLeft">
-        <h1>Welcome to Relworx Money!</h1>
-        <p>Here we help you manage your money either sign in or sign up to continue</p>
-        <ul>
-          <li><button type="button">Sign In<i class="fa fa-sign-in" aria-hidden="true"></i></button></li>
-          <li><button type="button">Sign Up<i class="fa fa-user-plus" aria-hidden="true"></i></button></li>
-        </ul>
-      </div>
-      <div class="homeRight">
-        <img src="./images/creditcards.png" alt="Credits image">
+    <section class="homePage">
+      <div class="homepageCont">
+        <div class="homeLeft">
+          <h1>Welcome to Relworx Money!</h1>
+          <p>Here we help you manage your money either sign in or sign up to continue</p>
+          <ul>
+            <li><button class="signInBtn" type="button">Sign In<i class="fa fa-sign-in" aria-hidden="true"></i></button></li>
+            <li><button class="signUpBtn" type="button">Sign Up<i class="fa fa-user-plus" aria-hidden="true"></i></button></li>
+          </ul>
+        </div>
+        <div class="homeRight">
+          <img src="./images/creditcards.png" alt="Credits image">
+        </div>
       </div>
     </section>
 
@@ -87,5 +89,6 @@
     <p>&copy;2022 Relworx money LTD all rights reserved</p>
   </footer>
   
+  <script src="./scripts/spa.js"></script>
 </body>
 </html>
