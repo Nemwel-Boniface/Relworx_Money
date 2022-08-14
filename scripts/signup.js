@@ -9,7 +9,7 @@ const signUpform = document.querySelector('.signUpform');
 
 let users = [];
 
-console.log(users)
+// console.log(users)
 
 const admin = [
   {

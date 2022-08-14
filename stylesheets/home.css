@@ -35,6 +35,10 @@ a {
   font-size: 17px;
 }
 
+.error {
+  color: rgb(167, 40, 40);
+}
+
 /* Header section and navbar */
 
 .header {
