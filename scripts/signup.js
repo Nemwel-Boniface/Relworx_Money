@@ -29,6 +29,32 @@ const addAdminToLocalStorage = () => {
   localStorage.setItem('RelworxUser', JSON.stringify(admin));
 }
 
+const AddToLocalStorage = () => {
+  localStorage.setItem('RelworxUser', JSON.stringify(users));
+}
+
+const addANewUser = () => {
+  const usersCount = users.length;
+
+  users.push({
+    id: usersCount + 1,
+    firstName: userFirstName.value,
+    secondName: userlastName.value,
+    role: "user",
+    mobileNumber: mobileNo.value,
+    gender: usergender.value,
+    loggedIn: false,
+    email: useremail.value,
+    password: userpassword.value
+  })
+  AddToLocalStorage(users);
+  signUpform.reset();
+}
+
+newUser.addEventListener('click', () => {
+  addANewUser();
+})
+
 window.addEventListener('DOMContentLoaded', () => {
   if (!localStorage.getItem('RelworxUser')) {
     addAdminToLocalStorage()
