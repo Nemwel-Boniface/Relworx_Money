@@ -50,6 +50,10 @@ a {
   align-items: center;
 }
 
+.header .navbar h2 {
+  cursor: pointer;
+}
+
 ul {
   display: flex;
 }
@@ -94,7 +98,7 @@ ul li button i {
   padding: 5%;
 }
 
-.main .homePage {
+.main .homePage .homepageCont {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 30px;
