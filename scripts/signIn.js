@@ -1,38 +1,45 @@
 const signinform = document.querySelector('.signinform');
-const usermail = document.querySelector('.usermail').value;
-const userPwd = document.querySelector('.userPwd').value;
+const usermail = document.querySelector('.usermail');
+const userPwd = document.querySelector('.userPwd');
 const userSignInBTN = document.querySelector('.userSignInBTN');
 const error = document.querySelector('.error');
 
-const RelworkxUsers = [];
-
-console.log(RelworkxUsers)
+let retrievedusers = [];
 
 const getUsersFromLocalStorage = () => {
+  let RelworkxUsers = [];
+
   if(localStorage.getItem('RelworxUser')) {
-    users = JSON.parse(localStorage.getItem('RelworxUser'));
+    retrievedusers = JSON.parse(localStorage.getItem('RelworxUser'));
   }
 
-  users.forEach((user) => {
+  retrievedusers.forEach((user) => {
     RelworkxUsers.push(user);
   })
   
   return RelworkxUsers;
 }
 
-const verifyUser = (email, pwd) => {
-  RelworkxUsers.forEach((user) => {
-    if(user.email == email && user.password == pwd) {
-      RelworkxUsers[user].loggedIn = true
+let allLoadedUsers = getUsersFromLocalStorage();
+
+const verifyUser = (mail, pwd) => {
+  let usr = false;
+  allLoadedUsers.forEach((user) => {
+    if(user["email"] == mail && user["password"] == pwd) {
+      usr = true;
+      user["loggedIn"] = true
       signinform.reset();
-    } else {
-      error.innerHTML = `User with email ${usermail} does not exist!`;
+      location.href = '/account.html';
     }
   })
+  if(usr == false) {
+    error.innerHTML = `User with email ${mail} does not exist!`;
+  }
 }
 
-userSignInBTN.addEventListener('click', () => {
-  verifyUser(usermail, userPwd);
+signinform.addEventListener('submit', (e) => {
+  e.preventDefault();
+  verifyUser(usermail.value, userPwd.value);
 })
 
 window.addEventListener('DOMContentLoaded', () => {
