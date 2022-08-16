@@ -42,6 +42,17 @@ const genderImages = [
   }
 ]
 
+const updateUserAmount = (e, amount) => {
+  allLoadedUsers.forEach((userToAdd) => {
+    if(userToAdd["id"] == e) {
+      let old = Number(userToAdd["amount"]);
+      let toBeAddAmount = Number(amount)
+      let newAmount = old + toBeAddAmount;
+      console.log(newAmount);
+    }
+  })
+}
+
 const hideMenu = () => {
   topupFormWrapper.style.display = 'none';
 }
@@ -80,7 +91,6 @@ const generateTopUpForm = (e) => {
 
   topupFormButton.addEventListener('click', () => {
     updateUserAmount(e, topupFormInput.value);
-    console.log('sent');
   })
 
   topupForm.append(topupFormInput, topupFormButton);
