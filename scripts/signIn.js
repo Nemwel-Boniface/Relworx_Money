@@ -87,7 +87,7 @@ const generateAccountDetails = (e) => {
       accountulli1button1I1.classList.add('fa', 'fa-plus');
 
       accountulli1button1.appendChild(accountulli1button1I1);
-      accountulli1.append(accountulli1button1, accountulli1button1I1)
+      accountulli1.append(accountUser.role == 'admin'? accountulli1button1:'', accountulli1button1I1)
 
 
       const accountulli2 = document.createElement('li');
