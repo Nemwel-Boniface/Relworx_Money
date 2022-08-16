@@ -9,7 +9,7 @@ const signUpform = document.querySelector('.signUpform');
 
 let users = [];
 
-// console.log(users)
+console.log(users)
 
 const admin = [
   {
@@ -21,7 +21,8 @@ const admin = [
     gender: "male",
     loggedIn: false,
     email: "nemwelboniface@outlook.com",
-    password: "nemwel123"
+    password: "nemwel123",
+    amount: 5000
   }
 ]
 
@@ -45,7 +46,8 @@ const addANewUser = () => {
     gender: usergender.value,
     loggedIn: false,
     email: useremail.value,
-    password: userpassword.value
+    password: userpassword.value,
+    amount: 1000
   })
   AddToLocalStorage(users);
   getFromLocalStorage()
