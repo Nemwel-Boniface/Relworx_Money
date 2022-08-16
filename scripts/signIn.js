@@ -12,6 +12,7 @@ const signinPageAccount = document.querySelector(".signin");
 const signUpPageAccount = document.querySelector('.signup');
 
 const topupFormWrapper = document.querySelector('.topup');
+const sendMoneyWrapper = document.querySelector('.sendMoney');
 
 let retrievedusers = [];
 
@@ -70,6 +71,65 @@ const updateUserAmount = (e, amount) => {
 
 const hideMenu = () => {
   topupFormWrapper.style.display = 'none';
+  sendMoneyWrapper.style.display = 'none';
+}
+
+const generateSendMoneyForm = () => {
+  sendMoneyWrapper.style.display = 'block';
+  const sendMonwyWrap = document.createElement('div');
+  sendMonwyWrap.classList.add('sendMonwyWrap');
+  
+  const sendMneyHeader = document.createElement('div');
+  sendMneyHeader.classList.add('sendMneyHeader');
+
+  const sendMneyHeaderH2 = document.createElement('h2');
+  sendMneyHeaderH2.textContent = 'Relworxs facilitates your money transfers seemlessly';
+
+  const sendMneyHeaderButton = document.createElement('button');
+  sendMneyHeaderButton.classList.add('closentn');
+  sendMneyHeaderButton.textContent = 'X';
+
+  sendMneyHeaderButton.addEventListener('click', () => {
+    hideMenu();
+  })
+
+  sendMneyHeader.append(sendMneyHeaderH2, sendMneyHeaderButton);
+
+  const sendDataForm = document.createElement('form');
+  sendDataForm.classList.add('form');
+
+  const sendDataFormInput = document.createElement('input');
+  sendDataFormInput.placeholder = 'Amount that you wish to transfer';
+  sendDataFormInput.type = 'number';
+  sendDataFormInput.required = true;
+
+  const sendDataFormLabel = document.createElement('label');
+  sendDataFormLabel.htmlFor = 'recepient';
+  sendDataFormLabel.textContent = 'Select your recepient:';
+
+  const sendDataFormSelect = document.createElement('select');
+  sendDataFormSelect.classList.add('recepient');
+  sendDataFormSelect.name = 'recepient';
+
+  let sendDataFormOption = document.createElement('option');
+  allLoadedUsers.forEach((userTOsend) => { 
+    // var sendDataFormOption = document.createElement('option');
+    sendDataFormOption.value = userTOsend['firstName'];
+    sendDataFormOption.textContent = userTOsend['firstName'];
+    sendDataFormSelect.append(sendDataFormOption);
+  })
+
+  // sendDataFormSelect.append(sendDataFormOption);
+
+  const sendDataFormButton = document.createElement('button');
+  sendDataFormButton.type = 'submit';
+  sendDataFormButton.textContent = 'Send'
+
+  sendDataForm.append(sendDataFormInput, sendDataFormLabel, sendDataFormSelect, sendDataFormButton);
+
+  sendMonwyWrap.append(sendMneyHeader, sendDataForm);
+
+  sendMoneyWrapper.appendChild(sendMonwyWrap);
 }
 
 const generateTopUpForm = (e) => {
@@ -99,6 +159,7 @@ const generateTopUpForm = (e) => {
   const topupFormInput = document.createElement('input');
   topupFormInput.type = 'number';
   topupFormInput.placeholder = 'Enter amount to topup';
+  topupFormInput.required = true;
 
   const topupFormButton = document.createElement('button');
   topupFormButton.type = 'submit';
@@ -171,6 +232,10 @@ const generateAccountDetails = (e) => {
       const accountulli1button1I2 = document.createElement('i');
       accountulli1button1I2.classList.add('fa', 'fa-paper-plane');
       
+      accountulli1button2.addEventListener('click', () => {
+        generateSendMoneyForm()
+      })
+
       accountulli1button2.appendChild(accountulli1button1I2);
       accountulli2.append(accountulli1button2, accountulli1button1I2)
 

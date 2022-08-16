@@ -4,7 +4,7 @@
   z-index: 2;
   margin: auto;
   position: relative;
-  /* display: none; */
+  display: none;
   background-color: #fff;
 }
 
@@ -26,6 +26,10 @@
 .sendMneyHeader button {
   width: 40px;
   background-color: rgb(184, 25, 25);
+}
+
+.sendDataForm {
+  display: block;
 }
 
 .sendDataForm input {

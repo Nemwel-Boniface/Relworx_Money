@@ -9,7 +9,7 @@
 
   <link rel="stylesheet" href="./stylesheets/home.css">
   <link rel="stylesheet" href="./stylesheets/account.css">
-  <link rel="stylesheet" href="./stylesheets/topup.css">
+  <link rel="stylesheet" href="./stylesheets/sendMoney.css">
 
   <!--font aweome icons links-->
 
@@ -24,6 +24,24 @@
 </head>
 <body>
 
+
+  <section class="sendMoney">
+    <div class="sendMonwyWrap">
+      <div class="sendMneyHeader">
+        <h2>Relworxs facilitates your money transfers seemlessly</h2>
+        <button class="closentn" type="button">X</button>
+      </div>
+      <form class="sendDataForm">
+        <input type="number" placeholder="Amount that you wish to transfer" required><br>
+        <label for="recepient">Select your recepient:</label>
+        <select class="recepient" name="recepient" id="recepient">
+          <option value="recepient">Nemwel</option>
+          <option value="female">Martha</option>
+        </select><br>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </section>
   <script src="./scripts/signIn.js"></script>
 </body>
 
