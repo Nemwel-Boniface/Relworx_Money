@@ -69,12 +69,13 @@ const updateUserAmount = (e, amount) => {
   })
 }
 
+
 const hideMenu = () => {
   topupFormWrapper.style.display = 'none';
   sendMoneyWrapper.style.display = 'none';
 }
 
-const generateSendMoneyForm = () => {
+const generateSendMoneyForm = (e) => {
   sendMoneyWrapper.style.display = 'block';
   const sendMonwyWrap = document.createElement('div');
   sendMonwyWrap.classList.add('sendMonwyWrap');
@@ -111,19 +112,20 @@ const generateSendMoneyForm = () => {
   sendDataFormSelect.classList.add('recepient');
   sendDataFormSelect.name = 'recepient';
 
-  let sendDataFormOption = document.createElement('option');
   allLoadedUsers.forEach((userTOsend) => { 
-    // var sendDataFormOption = document.createElement('option');
+    let sendDataFormOption = document.createElement('option');
     sendDataFormOption.value = userTOsend['firstName'];
-    sendDataFormOption.textContent = userTOsend['firstName'];
-    sendDataFormSelect.append(sendDataFormOption);
+    sendDataFormOption.text = userTOsend['firstName'];
+    sendDataFormSelect.appendChild(sendDataFormOption);
   })
-
-  // sendDataFormSelect.append(sendDataFormOption);
 
   const sendDataFormButton = document.createElement('button');
   sendDataFormButton.type = 'submit';
   sendDataFormButton.textContent = 'Send'
+
+  sendDataFormButton.addEventListener('click', () => {
+    implementSendMoney(e, sendDataFormInput.value, sendDataFormSelect.value)
+  })
 
   sendDataForm.append(sendDataFormInput, sendDataFormLabel, sendDataFormSelect, sendDataFormButton);
 
@@ -182,7 +184,6 @@ const generateAccountDetails = (e) => {
   signinPageAccount.classList.add('hidden');
   signUpPageAccount.classList.add('hidden');
   usrAccount.classList.remove('hidden');
-  // mainp.classList.add('hidden');
   unique.innerHTML = '';
   allLoadedUsers.forEach((accountUser) => {
     if(accountUser['id'] == e) {
@@ -233,7 +234,7 @@ const generateAccountDetails = (e) => {
       accountulli1button1I2.classList.add('fa', 'fa-paper-plane');
       
       accountulli1button2.addEventListener('click', () => {
-        generateSendMoneyForm()
+        generateSendMoneyForm(e)
       })
 
       accountulli1button2.appendChild(accountulli1button1I2);
@@ -255,7 +256,6 @@ const verifyUser = (mail, pwd) => {
       user["loggedIn"] = true
       signinform.reset();
       generateAccountDetails(user['id'])
-      // location.href = '/account.html';
     }
   })
   if(usr == false) {
