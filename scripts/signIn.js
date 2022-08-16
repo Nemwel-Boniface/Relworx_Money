@@ -79,6 +79,15 @@ const implementSendMoney = (e, transferAmount, transferRecepient) => {
     }
   })
   saveAmout(allLoadedUsers);  
+
+  allLoadedUsers.forEach((moneyReceiver) => {
+    if(moneyReceiver['firstName'] == transferRecepient) {
+      let newMoney = Number(moneyReceiver['amount']);
+      let added = newMoney + NumtransferAmount;
+      moneyReceiver['amount'] = added; 
+    }
+  })
+  saveAmout(allLoadedUsers);
 }
 
 const hideMenu = () => {
