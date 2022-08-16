@@ -61,7 +61,9 @@ const generateTopUpForm = (e) => {
   topupHeaderButton.classList.add('closebtn');
   topupHeaderButton.textContent = 'X';
 
-
+  topupHeaderButton.addEventListener('click', () => {
+    hideMenu();
+  })
 
   topupHeader.append(topupHeaderH2, topupHeaderButton);
 
@@ -76,7 +78,10 @@ const generateTopUpForm = (e) => {
   topupFormButton.type = 'submit';
   topupFormButton.textContent = 'Top Up';
 
-  
+  topupFormButton.addEventListener('click', () => {
+    updateUserAmount(e, topupFormInput.value);
+    console.log('sent');
+  })
 
   topupForm.append(topupFormInput, topupFormButton);
 
@@ -126,7 +131,9 @@ const generateAccountDetails = (e) => {
       const accountulli1button1I1 = document.createElement('i');
       accountulli1button1I1.classList.add('fa', 'fa-plus');
 
-      
+      accountulli1button1.addEventListener('click', () => {
+        generateTopUpForm(accountUser.id);
+      })
 
       accountulli1button1.appendChild(accountulli1button1I1);
       accountulli1.append(accountUser.role == 'admin'? accountulli1button1:'', accountulli1button1I1)
