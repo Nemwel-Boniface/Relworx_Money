@@ -9,8 +9,6 @@ const signUpform = document.querySelector('.signUpform');
 
 let users = [];
 
-console.log(users)
-
 const admin = [
   {
     id: 1,
@@ -69,7 +67,6 @@ const getFromLocalStorage = () => {
   
   return users;
 }
-// getFromLocalStorage();
 
 window.addEventListener('DOMContentLoaded', () => {
   if (!localStorage.getItem('RelworxUser')) {

@@ -265,7 +265,6 @@ const generateAccountDetails = (e) => {
       unique.append(profileHeader, accountH3, accountUL)
     }
   })
-  console.log(allLoadedUsers)
 }
 
 const verifyUser = (mail, pwd) => {
