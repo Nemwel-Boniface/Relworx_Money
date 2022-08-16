@@ -35,6 +35,10 @@ a {
   font-size: 17px;
 }
 
+.error {
+  color: rgb(167, 40, 40);
+}
+
 /* Header section and navbar */
 
 .header {
@@ -135,16 +139,16 @@ ul li button i {
   width: 100%;
 }
 
-.signin .accountSignin .form {
+.signin .accountSignin .signinform {
   margin: 3rem 0;
 }
 
-.signin .accountSignin .form input {
+.signin .accountSignin .signinform input {
   margin: 1rem 0;
   padding: 10px;
 }
 
-.signin .accountSignin .form button {
+.signin .accountSignin .signinform button {
   width: 100px;
   background-color: var(--blue);
   color: #fff;
@@ -153,13 +157,13 @@ ul li button i {
   padding: 10px;
 }
 
-.signin .accountSignin .form button:hover {
+.signin .accountSignin .signinform button:hover {
   border: 1px solid var(--blue);
   background-color: #fff;
   color: var(--blue);
 }
 
-.signin .accountSignin .form button i {
+.signin .accountSignin .signinform button i {
   margin-left: 5px;
   font-size: 23px;
 }
@@ -182,25 +186,25 @@ ul li button i {
   width: 100%;
 }
 
-.signup .accountSignup .form {
+.signup .accountSignup .signUpform {
   margin: 3rem 0;
 }
 
-.signup .accountSignup .form h3 {
+.signup .accountSignup .signUpform h3 {
   margin: 0.4rem 0;
 }
 
-.signup .accountSignup .form .inputnameGroup {
+.signup .accountSignup .signUpform .inputnameGroup {
   display: flex;
   gap: 10px;
 }
 
-.signup .accountSignup .form input {
+.signup .accountSignup .signUpform input {
   margin: 0.4rem 0;
   padding: 10px;
 }
 
-.signup .accountSignup .form button {
+.signup .accountSignup .signUpform button {
   width: 140px;
   background-color: var(--blue);
   color: #fff;
@@ -209,13 +213,13 @@ ul li button i {
   padding: 10px;
 }
 
-.signup .accountSignup .form button:hover {
+.signup .accountSignup .signUpform button:hover {
   border: 1px solid var(--blue);
   background-color: #fff;
   color: var(--blue);
 }
 
-.signup .accountSignup .form button i {
+.signup .accountSignup .signUpform button i {
   margin-left: 5px;
   font-size: 23px;
 }

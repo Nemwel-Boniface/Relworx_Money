@@ -8,6 +8,7 @@
   <!-- Project stylesheets -->
 
   <link rel="stylesheet" href="./stylesheets/home.css">
+  <link rel="stylesheet" href="./stylesheets/account.css">
 
   <!--font aweome icons links-->
 
@@ -21,12 +22,13 @@
 </head>
 <body>
 
-  <header class="header">
+  <header class="header mainp">
     <nav class="navbar">
       <h2 class="home">Relworx Money</h2>
       <ul>
         <li><button class="signInBtn" type="button">Sign In<i class="fa fa-sign-in" aria-hidden="true"></i></button></li>
         <li><button class="signUpBtn" type="button">Sign Up<i class="fa fa-user-plus" aria-hidden="true"></i></button></li>
+        <li><button type="button"><a href="index.html">Log out<i class="fa fa-sign-out" aria-hidden="true"></i></a></button></li>
       </ul>
     </nav>
   </header>
@@ -52,12 +54,13 @@
       <h2>We are happy to see you back!</h2>
       <div class="accountSignin">
         <img src="./images/login.png" alt="sign in image">
-        <fotm class="form" id="form">
+        <form class="signinform" id="form">
           <h3>Kindly login with your email and password</h3><br>
-          <input type="email" placeholder="example@gmail.com" required><br>
-          <input type="password" placeholder="your password" required><br>
-          <button type="submit">Log in<i class="fa fa-sign-in" aria-hidden="true"></i></button>
-        </fotm>
+          <input class="usermail" type="email" placeholder="example@gmail.com" required /><br>
+          <input class="userPwd" type="password" placeholder="your password" required /><br>
+          <button class="userSignInBTN" type="submit">Log in<i class="fa fa-sign-in" aria-hidden="true"></i></button>
+          <small class="error"></small>
+        </form>
       </div>
     </section>
 
@@ -65,30 +68,53 @@
       <h2>Welcome to Relworx. Let's create an account for you.</h2>
       <div class="accountSignup">
         <img src="./images/signup.png" alt="sign up image">
-        <form class="form" id="form">
+        <form class="signUpform" id="form">
           <h3>Create an account by filling all of the fields</h3>
           <div class="inputnameGroup">
-            <input type="text" placeholder="Your first name" required>
-            <input type="text" placeholder="Your second name" required>
+            <input class="firstName" type="text" placeholder="Your first name" required>
+            <input class="lastName" type="text" placeholder="Your second name" required>
           </div>
-          <input type="tel" placeholder="your Mobile phone" required><br>
-          <input type="email" placeholder="example@gmail.com" required><br>
+          <input class="mobileNo" type="tel" placeholder="your Mobile phone" required><br>
+          <input class="email" type="email" placeholder="example@gmail.com" required><br>
           <label for="gender">Select your gender:</label>
-          <select name="gender" id="gender">
+          <select class="gender" name="gender" id="gender">
             <option value="male">Male</option>
             <option value="female">Female</option>
           </select><br>
-          <input type="password" placeholder="Enter your password" required><br>
-          <button type="submit">Sign Up<i class="fa fa-user-plus" aria-hidden="true"></i></button>
+          <input class="password" type="password" placeholder="Enter your password" required><br>
+          <button class="newUser" type="submit">Sign Up<i class="fa fa-user-plus" aria-hidden="true"></i></button>
         </form>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
+  <section class="usrAccount hidden">
+  
+    <section id="unique" class="account">
+      <div class="profileHeader">
+        <img src="./images/femaleAvatar.png" alt="Avatar">
+        <div class="headerDetails">
+          <h2>Nemwel Boniface</h2>
+          <p>nemwelboniface@gmail.com</p>
+          <p>+254727475518</p>
+        </div>
+      </div>
+  
+      <h3>Balance: ksh 2000</h3>
+  
+      <ul>
+        <li><button type="button">Top up money<i class="fa fa-plus" aria-hidden="true"></i></button></li>
+        <li><button type="button">Send Money<i class="fa fa-paper-plane" aria-hidden="true"></i></button></li>
+      </ul>
+    </section>
+  </section>
+
+  <footer class="footer mainp">
     <p>&copy;2022 Relworx money LTD all rights reserved</p>
   </footer>
   
   <script src="./scripts/spa.js"></script>
+  <script src="./scripts/signup.js"></script>
+  <script src="./scripts/signIn.js"></script>
 </body>
 </html>
