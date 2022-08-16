@@ -1,7 +1,3 @@
-// import generateAccountDetails from './modules/account.js';
-
-// const accountSection = document.querySelector('.account');
-
 const unique = document.querySelector('#unique');
 
 const signinform = document.querySelector('.signinform');
@@ -14,7 +10,8 @@ const usrAccount = document.querySelector('.usrAccount');
 const homePageAccount = document.querySelector('.homePage');
 const signinPageAccount = document.querySelector(".signin");
 const signUpPageAccount = document.querySelector('.signup');
-// const mainp = document.querySelector('.mainP');
+
+const topupFormWrapper = document.querySelector('.topup');
 
 let retrievedusers = [];
 
@@ -44,6 +41,49 @@ const genderImages = [
     genderImg: './images/femaleAvatar.png'
   }
 ]
+
+const hideMenu = () => {
+  topupFormWrapper.style.display = 'none';
+}
+
+const generateTopUpForm = (e) => {
+  topupFormWrapper.style.display = 'block';
+  const topupmoney = document.createElement('div');
+  topupmoney.classList.add('topupmoney');
+
+  const topupHeader = document.createElement('div');
+  topupHeader.classList.add('topupHeader');
+
+  const topupHeaderH2 = document.createElement('h2');
+  topupHeaderH2.textContent = 'Relworx Top Up money';
+
+  const topupHeaderButton = document.createElement('button');
+  topupHeaderButton.classList.add('closebtn');
+  topupHeaderButton.textContent = 'X';
+
+
+
+  topupHeader.append(topupHeaderH2, topupHeaderButton);
+
+  const topupForm = document.createElement('form');
+  topupForm.classList.add('topupForm');
+
+  const topupFormInput = document.createElement('input');
+  topupFormInput.type = 'number';
+  topupFormInput.placeholder = 'Enter amount to topup';
+
+  const topupFormButton = document.createElement('button');
+  topupFormButton.type = 'submit';
+  topupFormButton.textContent = 'Top Up';
+
+  
+
+  topupForm.append(topupFormInput, topupFormButton);
+
+  topupmoney.append(topupHeader, topupForm);
+
+  topupFormWrapper.append(topupmoney)
+}
 
 const generateAccountDetails = (e) => {
   homePageAccount.classList.add('hidden');
@@ -86,6 +126,8 @@ const generateAccountDetails = (e) => {
       const accountulli1button1I1 = document.createElement('i');
       accountulli1button1I1.classList.add('fa', 'fa-plus');
 
+      
+
       accountulli1button1.appendChild(accountulli1button1I1);
       accountulli1.append(accountUser.role == 'admin'? accountulli1button1:'', accountulli1button1I1)
 
@@ -104,6 +146,7 @@ const generateAccountDetails = (e) => {
       unique.append(profileHeader, accountH3, accountUL)
     }
   })
+  console.log(allLoadedUsers)
 }
 
 const verifyUser = (mail, pwd) => {
