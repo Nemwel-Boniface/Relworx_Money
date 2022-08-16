@@ -69,6 +69,17 @@ const updateUserAmount = (e, amount) => {
   })
 }
 
+const implementSendMoney = (e, transferAmount, transferRecepient) => {
+  let NumtransferAmount = Number(transferAmount);
+  allLoadedUsers.forEach((moneySender) => {
+    if(moneySender['id'] == e) {
+      let mymoney = Number(moneySender['amount'])
+      let subtractedValue = mymoney - NumtransferAmount;
+      moneySender['amount'] = subtractedValue;
+    }
+  })
+  saveAmout(allLoadedUsers);  
+}
 
 const hideMenu = () => {
   topupFormWrapper.style.display = 'none';
