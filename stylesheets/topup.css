@@ -1,0 +1,34 @@
+.topup {
+  width: 700px;
+  height: 400px;
+  z-index: 2;
+  margin: auto;
+  position: relative;
+  /* background-color: rgba(107, 97, 97); */
+  background-color: #fff;
+}
+
+.topupmoney {
+  margin: auto 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.topupHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+.topupHeader button {
+  width: 40px;
+  background-color: rgb(184, 25, 25);
+}
+
+.topupForm input {
+  padding: 10px;
+  margin: 0.5rem 0;
+}
