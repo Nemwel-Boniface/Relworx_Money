@@ -4,7 +4,7 @@
   z-index: 2;
   margin: auto;
   position: relative;
-  /* background-color: rgba(107, 97, 97); */
+  display: none;
   background-color: #fff;
 }
 

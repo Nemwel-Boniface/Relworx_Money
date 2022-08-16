@@ -204,7 +204,7 @@ ul li button i {
   padding: 10px;
 }
 
-.signup .accountSignup .signUpform button {
+ button {
   width: 140px;
   background-color: var(--blue);
   color: #fff;
@@ -213,13 +213,13 @@ ul li button i {
   padding: 10px;
 }
 
-.signup .accountSignup .signUpform button:hover {
+ button:hover {
   border: 1px solid var(--blue);
   background-color: #fff;
   color: var(--blue);
 }
 
-.signup .accountSignup .signUpform button i {
+ button i {
   margin-left: 5px;
   font-size: 23px;
 }
