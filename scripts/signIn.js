@@ -42,13 +42,28 @@ const genderImages = [
   }
 ]
 
+
+const saveAmout = (e) => {
+  localStorage.setItem('RelworxUser', JSON.stringify(e));
+}
+
+const saveNewUserAmount = (e, amount) => {
+  
+  allLoadedUsers.forEach((loadedUser) => {
+    if(loadedUser["id"] == e) {
+      loadedUser.amount = amount;
+    }
+  })
+  saveAmout(allLoadedUsers);
+}
+
 const updateUserAmount = (e, amount) => {
   allLoadedUsers.forEach((userToAdd) => {
     if(userToAdd["id"] == e) {
       let old = Number(userToAdd["amount"]);
       let toBeAddAmount = Number(amount)
       let newAmount = old + toBeAddAmount;
-      console.log(newAmount);
+      saveNewUserAmount(e, newAmount);
     }
   })
 }
@@ -89,7 +104,8 @@ const generateTopUpForm = (e) => {
   topupFormButton.type = 'submit';
   topupFormButton.textContent = 'Top Up';
 
-  topupFormButton.addEventListener('click', () => {
+  topupFormButton.addEventListener('click', (k) => {
+    k.preventDefault()
     updateUserAmount(e, topupFormInput.value);
   })
 
