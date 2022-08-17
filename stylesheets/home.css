@@ -39,6 +39,10 @@ a {
   color: rgb(167, 40, 40);
 }
 
+.success {
+  color: rgb(30, 148, 21);
+}
+
 /* Header section and navbar */
 
 .header {

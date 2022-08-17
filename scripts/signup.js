@@ -6,6 +6,7 @@ const usergender = document.querySelector('.gender');
 const userpassword = document.querySelector('.password');
 const newUser = document.querySelector('.newUser');
 const signUpform = document.querySelector('.signUpform');
+const success = document.querySelector('.success');
 
 let users = [];
 
@@ -50,6 +51,7 @@ const addANewUser = () => {
   AddToLocalStorage(users);
   getFromLocalStorage()
   signUpform.reset();
+  success.innerHTML = `Account was created succesfully. Kindly refresh to update the database and click on sign in to login to your account. Ksh 1000 was deposited to your account. Welcome to Relworx!`;
 }
 
 newUser.addEventListener('click', () => {

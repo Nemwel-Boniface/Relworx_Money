@@ -48,23 +48,23 @@ const saveAmout = (e) => {
   localStorage.setItem('RelworxUser', JSON.stringify(e));
 }
 
-const saveNewUserAmount = (e, amount) => {
+const saveNewUserAmount = (amount, e) => {
   
   allLoadedUsers.forEach((loadedUser) => {
-    if(loadedUser["id"] == e) {
+    if(loadedUser["firstName"] == e) {
       loadedUser.amount = amount;
     }
   })
   saveAmout(allLoadedUsers);
 }
 
-const updateUserAmount = (e, amount) => {
+const updateUserAmount = (amount, receiver) => {
   allLoadedUsers.forEach((userToAdd) => {
-    if(userToAdd["id"] == e) {
+    if(userToAdd["firstName"] == receiver) {
       let old = Number(userToAdd["amount"]);
       let toBeAddAmount = Number(amount)
       let newAmount = old + toBeAddAmount;
-      saveNewUserAmount(e, newAmount);
+      saveNewUserAmount(newAmount, receiver);
     }
   })
 }
@@ -141,13 +141,19 @@ const generateSendMoneyForm = (e) => {
 
   const sendDataFormButton = document.createElement('button');
   sendDataFormButton.type = 'submit';
-  sendDataFormButton.textContent = 'Send'
+  sendDataFormButton.textContent = 'Send';
 
-  sendDataFormButton.addEventListener('click', () => {
-    implementSendMoney(e, sendDataFormInput.value, sendDataFormSelect.value)
+  const successMSG = document.createElement('small');
+  successMSG.classList.add('success');
+
+  sendDataFormButton.addEventListener('click', (k) => {
+    k.preventDefault()
+    implementSendMoney(e, sendDataFormInput.value, sendDataFormSelect.value);
+    sendDataForm.reset();
+    successMSG.innerHTML = `Money was sent to the recepient succesfully. Kindly logout and login to receivers account to see updated balance. Thank you for using Relworx!`;
   })
 
-  sendDataForm.append(sendDataFormInput, sendDataFormLabel, sendDataFormSelect, sendDataFormButton);
+  sendDataForm.append(sendDataFormInput, sendDataFormLabel, sendDataFormSelect, sendDataFormButton, successMSG);
 
   sendMonwyWrap.append(sendMneyHeader, sendDataForm);
 
@@ -183,16 +189,36 @@ const generateTopUpForm = (e) => {
   topupFormInput.placeholder = 'Enter amount to topup';
   topupFormInput.required = true;
 
+  const topupFormLabel = document.createElement('label');
+  topupFormLabel.htmlFor = 'recepient';
+  topupFormLabel.textContent = 'Select your recepient:';
+
+  const topupFormSelect = document.createElement('select');
+  topupFormSelect.classList.add('recepient');
+  topupFormSelect.name = 'recepient';
+
+  allLoadedUsers.forEach((userTOsend) => { 
+    let topupFormOption = document.createElement('option');
+    topupFormOption.value = userTOsend['firstName'];
+    topupFormOption.text = userTOsend['firstName'];
+    topupFormSelect.appendChild(topupFormOption);
+  })
+
   const topupFormButton = document.createElement('button');
   topupFormButton.type = 'submit';
   topupFormButton.textContent = 'Top Up';
 
+  const successMSG = document.createElement('small');
+  successMSG.classList.add('success');
+
   topupFormButton.addEventListener('click', (k) => {
     k.preventDefault()
-    updateUserAmount(e, topupFormInput.value);
+    updateUserAmount(topupFormInput.value, topupFormSelect.value);
+    topupForm.reset();
+    successMSG.innerHTML = `Money was topped up to the recepient succesfully. Kindly logout and login to receivers account to see updated balance. Thank you for using Relworx!`;
   })
 
-  topupForm.append(topupFormInput, topupFormButton);
+  topupForm.append(topupFormInput, topupFormLabel, topupFormSelect, topupFormButton, successMSG);
 
   topupmoney.append(topupHeader, topupForm);
 
@@ -210,7 +236,7 @@ const generateAccountDetails = (e) => {
       const profileHeader = document.createElement('div');
       profileHeader.classList.add('profileHeader');
       const profileImg = document.createElement('img');
-      profileImg.src = accountUser.gender = 'male'? genderImages[0].genderImg: genderImages[1].genderImg;
+      profileImg.src = accountUser.gender == 'male'? genderImages[0].genderImg: genderImages[1].genderImg;
       profileImg.alt = 'Profile avatar';
 
       const headerDetails = document.createElement('div');
@@ -223,13 +249,13 @@ const generateAccountDetails = (e) => {
       headerDetailsemail.textContent = accountUser.email;
 
       const headerDetailsphone = document.createElement('p');
-      headerDetailsphone.textContent = accountUser.mobileNumber;
+      headerDetailsphone.textContent = `+2547${accountUser.mobileNumber}`;
 
       headerDetails.append(headerDetailsH2, headerDetailsemail, headerDetailsphone);
       profileHeader.append(profileImg, headerDetails)
 
       const accountH3 = document.createElement('h3');
-      accountH3.textContent = `Balance: ${accountUser.amount}`;
+      accountH3.textContent = `Balance: Ksh ${accountUser.amount}`;
 
       const accountUL = document.createElement('ul');
 
@@ -237,7 +263,6 @@ const generateAccountDetails = (e) => {
       const accountulli1button1 = document.createElement('button');
       accountulli1button1.textContent = 'Top up money';
       const accountulli1button1I1 = document.createElement('i');
-      accountulli1button1I1.classList.add('fa', 'fa-plus');
 
       accountulli1button1.addEventListener('click', () => {
         generateTopUpForm(accountUser.id);
@@ -251,7 +276,6 @@ const generateAccountDetails = (e) => {
       const accountulli1button2 = document.createElement('button');
       accountulli1button2.textContent = 'Send Money';
       const accountulli1button1I2 = document.createElement('i');
-      accountulli1button1I2.classList.add('fa', 'fa-paper-plane');
       
       accountulli1button2.addEventListener('click', () => {
         generateSendMoneyForm(e)
@@ -278,7 +302,7 @@ const verifyUser = (mail, pwd) => {
     }
   })
   if(usr == false) {
-    error.innerHTML = `User with email ${mail} does not exist!`;
+    error.innerHTML = `User with email ${mail} does not exist in our database. Kindly click on signup to create an account.`;
   }
 }
 
