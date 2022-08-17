@@ -225,7 +225,7 @@ const generateAccountDetails = (e) => {
       const profileHeader = document.createElement('div');
       profileHeader.classList.add('profileHeader');
       const profileImg = document.createElement('img');
-      profileImg.src = accountUser.gender = 'male'? genderImages[0].genderImg: genderImages[1].genderImg;
+      profileImg.src = accountUser.gender == 'male'? genderImages[0].genderImg: genderImages[1].genderImg;
       profileImg.alt = 'Profile avatar';
 
       const headerDetails = document.createElement('div');
@@ -238,13 +238,13 @@ const generateAccountDetails = (e) => {
       headerDetailsemail.textContent = accountUser.email;
 
       const headerDetailsphone = document.createElement('p');
-      headerDetailsphone.textContent = accountUser.mobileNumber;
+      headerDetailsphone.textContent = `+2547${accountUser.mobileNumber}`;
 
       headerDetails.append(headerDetailsH2, headerDetailsemail, headerDetailsphone);
       profileHeader.append(profileImg, headerDetails)
 
       const accountH3 = document.createElement('h3');
-      accountH3.textContent = `Balance: ${accountUser.amount}`;
+      accountH3.textContent = `Balance: Ksh ${accountUser.amount}`;
 
       const accountUL = document.createElement('ul');
 
@@ -252,7 +252,6 @@ const generateAccountDetails = (e) => {
       const accountulli1button1 = document.createElement('button');
       accountulli1button1.textContent = 'Top up money';
       const accountulli1button1I1 = document.createElement('i');
-      accountulli1button1I1.classList.add('fa', 'fa-plus');
 
       accountulli1button1.addEventListener('click', () => {
         generateTopUpForm(accountUser.id);
@@ -266,7 +265,6 @@ const generateAccountDetails = (e) => {
       const accountulli1button2 = document.createElement('button');
       accountulli1button2.textContent = 'Send Money';
       const accountulli1button1I2 = document.createElement('i');
-      accountulli1button1I2.classList.add('fa', 'fa-paper-plane');
       
       accountulli1button2.addEventListener('click', () => {
         generateSendMoneyForm(e)
@@ -293,7 +291,7 @@ const verifyUser = (mail, pwd) => {
     }
   })
   if(usr == false) {
-    error.innerHTML = `User with email ${mail} does not exist!`;
+    error.innerHTML = `User with email ${mail} does not exist in our database. Kindly click on signup to create an account.`;
   }
 }
 
