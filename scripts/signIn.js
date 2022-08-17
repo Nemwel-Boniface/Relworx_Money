@@ -141,13 +141,19 @@ const generateSendMoneyForm = (e) => {
 
   const sendDataFormButton = document.createElement('button');
   sendDataFormButton.type = 'submit';
-  sendDataFormButton.textContent = 'Send'
+  sendDataFormButton.textContent = 'Send';
 
-  sendDataFormButton.addEventListener('click', () => {
-    implementSendMoney(e, sendDataFormInput.value, sendDataFormSelect.value)
+  const successMSG = document.createElement('small');
+  successMSG.classList.add('success');
+
+  sendDataFormButton.addEventListener('click', (k) => {
+    k.preventDefault()
+    implementSendMoney(e, sendDataFormInput.value, sendDataFormSelect.value);
+    sendDataForm.reset();
+    successMSG.innerHTML = `Money was sent to the recepient succesfully. Kindly logout and login to receivers account to see updated balance. Thank you for using Relworx!`;
   })
 
-  sendDataForm.append(sendDataFormInput, sendDataFormLabel, sendDataFormSelect, sendDataFormButton);
+  sendDataForm.append(sendDataFormInput, sendDataFormLabel, sendDataFormSelect, sendDataFormButton, successMSG);
 
   sendMonwyWrap.append(sendMneyHeader, sendDataForm);
 
@@ -202,12 +208,17 @@ const generateTopUpForm = (e) => {
   topupFormButton.type = 'submit';
   topupFormButton.textContent = 'Top Up';
 
+  const successMSG = document.createElement('small');
+  successMSG.classList.add('success');
+
   topupFormButton.addEventListener('click', (k) => {
     k.preventDefault()
     updateUserAmount(topupFormInput.value, topupFormSelect.value);
+    topupForm.reset();
+    successMSG.innerHTML = `Money was topped up to the recepient succesfully. Kindly logout and login to receivers account to see updated balance. Thank you for using Relworx!`;
   })
 
-  topupForm.append(topupFormInput, topupFormLabel, topupFormSelect, topupFormButton);
+  topupForm.append(topupFormInput, topupFormLabel, topupFormSelect, topupFormButton, successMSG);
 
   topupmoney.append(topupHeader, topupForm);
 
