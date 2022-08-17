@@ -48,23 +48,23 @@ const saveAmout = (e) => {
   localStorage.setItem('RelworxUser', JSON.stringify(e));
 }
 
-const saveNewUserAmount = (e, amount) => {
+const saveNewUserAmount = (amount, e) => {
   
   allLoadedUsers.forEach((loadedUser) => {
-    if(loadedUser["id"] == e) {
+    if(loadedUser["firstName"] == e) {
       loadedUser.amount = amount;
     }
   })
   saveAmout(allLoadedUsers);
 }
 
-const updateUserAmount = (e, amount) => {
+const updateUserAmount = (amount, receiver) => {
   allLoadedUsers.forEach((userToAdd) => {
-    if(userToAdd["id"] == e) {
+    if(userToAdd["firstName"] == receiver) {
       let old = Number(userToAdd["amount"]);
       let toBeAddAmount = Number(amount)
       let newAmount = old + toBeAddAmount;
-      saveNewUserAmount(e, newAmount);
+      saveNewUserAmount(newAmount, receiver);
     }
   })
 }
@@ -183,16 +183,31 @@ const generateTopUpForm = (e) => {
   topupFormInput.placeholder = 'Enter amount to topup';
   topupFormInput.required = true;
 
+  const topupFormLabel = document.createElement('label');
+  topupFormLabel.htmlFor = 'recepient';
+  topupFormLabel.textContent = 'Select your recepient:';
+
+  const topupFormSelect = document.createElement('select');
+  topupFormSelect.classList.add('recepient');
+  topupFormSelect.name = 'recepient';
+
+  allLoadedUsers.forEach((userTOsend) => { 
+    let topupFormOption = document.createElement('option');
+    topupFormOption.value = userTOsend['firstName'];
+    topupFormOption.text = userTOsend['firstName'];
+    topupFormSelect.appendChild(topupFormOption);
+  })
+
   const topupFormButton = document.createElement('button');
   topupFormButton.type = 'submit';
   topupFormButton.textContent = 'Top Up';
 
   topupFormButton.addEventListener('click', (k) => {
     k.preventDefault()
-    updateUserAmount(e, topupFormInput.value);
+    updateUserAmount(topupFormInput.value, topupFormSelect.value);
   })
 
-  topupForm.append(topupFormInput, topupFormButton);
+  topupForm.append(topupFormInput, topupFormLabel, topupFormSelect, topupFormButton);
 
   topupmoney.append(topupHeader, topupForm);
 
