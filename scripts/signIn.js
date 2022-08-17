@@ -1,7 +1,3 @@
-// import generateAccountDetails from './modules/account.js';
-
-// const accountSection = document.querySelector('.account');
-
 const unique = document.querySelector('#unique');
 
 const signinform = document.querySelector('.signinform');
@@ -14,7 +10,9 @@ const usrAccount = document.querySelector('.usrAccount');
 const homePageAccount = document.querySelector('.homePage');
 const signinPageAccount = document.querySelector(".signin");
 const signUpPageAccount = document.querySelector('.signup');
-// const mainp = document.querySelector('.mainP');
+
+const topupFormWrapper = document.querySelector('.topup');
+const sendMoneyWrapper = document.querySelector('.sendMoney');
 
 let retrievedusers = [];
 
@@ -45,12 +43,167 @@ const genderImages = [
   }
 ]
 
+
+const saveAmout = (e) => {
+  localStorage.setItem('RelworxUser', JSON.stringify(e));
+}
+
+const saveNewUserAmount = (e, amount) => {
+  
+  allLoadedUsers.forEach((loadedUser) => {
+    if(loadedUser["id"] == e) {
+      loadedUser.amount = amount;
+    }
+  })
+  saveAmout(allLoadedUsers);
+}
+
+const updateUserAmount = (e, amount) => {
+  allLoadedUsers.forEach((userToAdd) => {
+    if(userToAdd["id"] == e) {
+      let old = Number(userToAdd["amount"]);
+      let toBeAddAmount = Number(amount)
+      let newAmount = old + toBeAddAmount;
+      saveNewUserAmount(e, newAmount);
+    }
+  })
+}
+
+const implementSendMoney = (e, transferAmount, transferRecepient) => {
+  let NumtransferAmount = Number(transferAmount);
+  allLoadedUsers.forEach((moneySender) => {
+    if(moneySender['id'] == e) {
+      let mymoney = Number(moneySender['amount'])
+      let subtractedValue = mymoney - NumtransferAmount;
+      moneySender['amount'] = subtractedValue;
+    }
+  })
+  saveAmout(allLoadedUsers);  
+
+  allLoadedUsers.forEach((moneyReceiver) => {
+    if(moneyReceiver['firstName'] == transferRecepient) {
+      let newMoney = Number(moneyReceiver['amount']);
+      let added = newMoney + NumtransferAmount;
+      moneyReceiver['amount'] = added; 
+    }
+  })
+  saveAmout(allLoadedUsers);
+}
+
+const hideMenu = () => {
+  topupFormWrapper.style.display = 'none';
+  sendMoneyWrapper.style.display = 'none';
+}
+
+const generateSendMoneyForm = (e) => {
+  sendMoneyWrapper.style.display = 'block';
+  const sendMonwyWrap = document.createElement('div');
+  sendMonwyWrap.classList.add('sendMonwyWrap');
+  
+  const sendMneyHeader = document.createElement('div');
+  sendMneyHeader.classList.add('sendMneyHeader');
+
+  const sendMneyHeaderH2 = document.createElement('h2');
+  sendMneyHeaderH2.textContent = 'Relworxs facilitates your money transfers seemlessly';
+
+  const sendMneyHeaderButton = document.createElement('button');
+  sendMneyHeaderButton.classList.add('closentn');
+  sendMneyHeaderButton.textContent = 'X';
+
+  sendMneyHeaderButton.addEventListener('click', () => {
+    hideMenu();
+  })
+
+  sendMneyHeader.append(sendMneyHeaderH2, sendMneyHeaderButton);
+
+  const sendDataForm = document.createElement('form');
+  sendDataForm.classList.add('form');
+
+  const sendDataFormInput = document.createElement('input');
+  sendDataFormInput.placeholder = 'Amount that you wish to transfer';
+  sendDataFormInput.type = 'number';
+  sendDataFormInput.required = true;
+
+  const sendDataFormLabel = document.createElement('label');
+  sendDataFormLabel.htmlFor = 'recepient';
+  sendDataFormLabel.textContent = 'Select your recepient:';
+
+  const sendDataFormSelect = document.createElement('select');
+  sendDataFormSelect.classList.add('recepient');
+  sendDataFormSelect.name = 'recepient';
+
+  allLoadedUsers.forEach((userTOsend) => { 
+    let sendDataFormOption = document.createElement('option');
+    sendDataFormOption.value = userTOsend['firstName'];
+    sendDataFormOption.text = userTOsend['firstName'];
+    sendDataFormSelect.appendChild(sendDataFormOption);
+  })
+
+  const sendDataFormButton = document.createElement('button');
+  sendDataFormButton.type = 'submit';
+  sendDataFormButton.textContent = 'Send'
+
+  sendDataFormButton.addEventListener('click', () => {
+    implementSendMoney(e, sendDataFormInput.value, sendDataFormSelect.value)
+  })
+
+  sendDataForm.append(sendDataFormInput, sendDataFormLabel, sendDataFormSelect, sendDataFormButton);
+
+  sendMonwyWrap.append(sendMneyHeader, sendDataForm);
+
+  sendMoneyWrapper.appendChild(sendMonwyWrap);
+}
+
+const generateTopUpForm = (e) => {
+  topupFormWrapper.style.display = 'block';
+  const topupmoney = document.createElement('div');
+  topupmoney.classList.add('topupmoney');
+
+  const topupHeader = document.createElement('div');
+  topupHeader.classList.add('topupHeader');
+
+  const topupHeaderH2 = document.createElement('h2');
+  topupHeaderH2.textContent = 'Relworx Top Up money';
+
+  const topupHeaderButton = document.createElement('button');
+  topupHeaderButton.classList.add('closebtn');
+  topupHeaderButton.textContent = 'X';
+
+  topupHeaderButton.addEventListener('click', () => {
+    hideMenu();
+  })
+
+  topupHeader.append(topupHeaderH2, topupHeaderButton);
+
+  const topupForm = document.createElement('form');
+  topupForm.classList.add('topupForm');
+
+  const topupFormInput = document.createElement('input');
+  topupFormInput.type = 'number';
+  topupFormInput.placeholder = 'Enter amount to topup';
+  topupFormInput.required = true;
+
+  const topupFormButton = document.createElement('button');
+  topupFormButton.type = 'submit';
+  topupFormButton.textContent = 'Top Up';
+
+  topupFormButton.addEventListener('click', (k) => {
+    k.preventDefault()
+    updateUserAmount(e, topupFormInput.value);
+  })
+
+  topupForm.append(topupFormInput, topupFormButton);
+
+  topupmoney.append(topupHeader, topupForm);
+
+  topupFormWrapper.append(topupmoney)
+}
+
 const generateAccountDetails = (e) => {
   homePageAccount.classList.add('hidden');
   signinPageAccount.classList.add('hidden');
   signUpPageAccount.classList.add('hidden');
   usrAccount.classList.remove('hidden');
-  // mainp.classList.add('hidden');
   unique.innerHTML = '';
   allLoadedUsers.forEach((accountUser) => {
     if(accountUser['id'] == e) {
@@ -86,8 +239,12 @@ const generateAccountDetails = (e) => {
       const accountulli1button1I1 = document.createElement('i');
       accountulli1button1I1.classList.add('fa', 'fa-plus');
 
+      accountulli1button1.addEventListener('click', () => {
+        generateTopUpForm(accountUser.id);
+      })
+
       accountulli1button1.appendChild(accountulli1button1I1);
-      accountulli1.append(accountulli1button1, accountulli1button1I1)
+      accountulli1.append(accountUser.role == 'admin'? accountulli1button1:'', accountulli1button1I1)
 
 
       const accountulli2 = document.createElement('li');
@@ -96,6 +253,10 @@ const generateAccountDetails = (e) => {
       const accountulli1button1I2 = document.createElement('i');
       accountulli1button1I2.classList.add('fa', 'fa-paper-plane');
       
+      accountulli1button2.addEventListener('click', () => {
+        generateSendMoneyForm(e)
+      })
+
       accountulli1button2.appendChild(accountulli1button1I2);
       accountulli2.append(accountulli1button2, accountulli1button1I2)
 
@@ -114,7 +275,6 @@ const verifyUser = (mail, pwd) => {
       user["loggedIn"] = true
       signinform.reset();
       generateAccountDetails(user['id'])
-      // location.href = '/account.html';
     }
   })
   if(usr == false) {

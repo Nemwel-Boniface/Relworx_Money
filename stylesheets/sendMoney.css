@@ -1,0 +1,42 @@
+.sendMoney {
+  width: 700px;
+  height: 400px;
+  z-index: 2;
+  margin: auto;
+  position: relative;
+  display: none;
+  background-color: #fff;
+}
+
+.sendMonwyWrap {
+  margin: auto 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.sendMneyHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+.sendMneyHeader button {
+  width: 40px;
+  background-color: rgb(184, 25, 25);
+}
+
+.sendDataForm {
+  display: block;
+}
+
+.sendDataForm input {
+  padding: 10px;
+  margin: 0.5rem 0;
+}
+
+.sendDataForm button {
+  margin: .6rem 0;
+}
